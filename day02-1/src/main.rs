@@ -23,7 +23,7 @@ pub fn solve_1(puzzle_input: String) -> i64 {
 }
 
 fn is_safe(level: Vec<i64>, mode: Mode) -> bool {
-    if let (Some(x), Some(y)) = (level.get(0), level.get(1)) {
+    if let (Some(x), Some(y)) = (level.first(), level.get(1)) {
         if (x - y).abs() > 3 {
             return false;
         }
@@ -31,25 +31,25 @@ fn is_safe(level: Vec<i64>, mode: Mode) -> bool {
         match mode {
             Mode::Asc => {
                 if y > x {
-                    return is_safe(new_level, Mode::Asc);
+                    is_safe(new_level, Mode::Asc)
                 } else {
-                    return false;
+                    false
                 }
             }
             Mode::Desc => {
                 if y < x {
-                    return is_safe(new_level, Mode::Desc);
+                    is_safe(new_level, Mode::Desc)
                 } else {
-                    return false;
+                    false
                 }
             }
             Mode::Undef => {
                 if x < y {
-                    return is_safe(new_level, Mode::Asc);
+                    is_safe(new_level, Mode::Asc)
                 } else if x > y {
-                    return is_safe(new_level, Mode::Desc);
+                    is_safe(new_level, Mode::Desc)
                 } else {
-                    return false;
+                    false
                     //return is_safe(new_level, Mode::Undef);
                 }
             }

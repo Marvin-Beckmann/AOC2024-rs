@@ -22,7 +22,7 @@ pub fn solve_2(puzzle_input: String) -> i64 {
     let multiplicities = multiplicities_right(right);
 
     left.iter().fold(0, |acc, value| {
-        acc + value * multiplicities.get(value).or(Some(&0)).unwrap()
+        acc + value * multiplicities.get(value).unwrap_or(&0)
     })
 }
 

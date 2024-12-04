@@ -24,7 +24,7 @@ pub fn solve_1(puzzle_input: String) -> i64 {
 
     let mut total = 0;
     for i in 0..left.len() {
-        total = total + (left[i] - right[i]).abs();
+        total += (left[i] - right[i]).abs();
     }
     total
 }
